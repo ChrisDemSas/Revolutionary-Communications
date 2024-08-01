@@ -37,5 +37,3 @@ def login_test() -> None:
     db_filepath = 'app/databases/userinfo.db'
 
     return db.login(username, password, db_filepath)
-
-print(login_test())
