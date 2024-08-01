@@ -27,7 +27,7 @@ def insert(data: dict, database: str) -> None:
     Create a table if it doesn't exist.
     
     Attributes:
-        data: The dataset in dictionary format, with title and dataframe object {title: data}.
+        data: The dataset in dictionary format, with table name and dataframe object {table name: data}.
         row: The row of data to be added, in this format: 
     """
 
@@ -36,8 +36,3 @@ def insert(data: dict, database: str) -> None:
     for item in data:
         curr = data[item]
         curr.to_sql(item, con = conn, if_exists = 'append', index = False)
-
-
-
-
-
