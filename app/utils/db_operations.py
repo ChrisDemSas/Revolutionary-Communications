@@ -12,15 +12,18 @@ def login(username: str, password: str, database: str) -> str:
     Pre-Condition: Must have users table and from the user login database.
     """
 
-    QUERY = f"""SELECT password 
-    FROM user 
-    WHERE username = {username}
+    QUERY = f"""SELECT password
+    FROM users 
+    WHERE username = '{username}'
     """
 
     con = sqlite3.connect(database)
-    result = con.execute(QUERY)
+    result_password = con.execute(QUERY).fetchone()[0]
 
-    return result
+    if password == result_password:
+        return 'Authenticated'
+    else:
+        return 'Authentication Failed'
 
 def insert(data: dict, database: str) -> None:
     """Take in a table, a row and a database and insert it into a database.

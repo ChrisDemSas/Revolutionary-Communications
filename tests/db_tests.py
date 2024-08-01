@@ -19,7 +19,7 @@ def add_user() -> None:
 
     db.insert(data, 'app/databases/userinfo.db')
 
-def check_users() -> tuple:
+def check_users() -> None:
     """Test to see if it is possible to obtain data from userinfo.db."""
 
     PROMPT = "SELECT * FROM users"
@@ -27,10 +27,15 @@ def check_users() -> tuple:
     c = conn.cursor()
     results = c.execute(PROMPT).fetchone()
 
-    assert check_users() == ("Company", "password")
+    assert results == ("Company", "password")
 
+def login_test() -> None:
+    """Test to see if logging in is successful."""
 
+    username = 'Company'
+    password = 'password'
+    db_filepath = 'app/databases/userinfo.db'
 
+    return db.login(username, password, db_filepath)
 
-
-
+print(login_test())
