@@ -1,0 +1,49 @@
+body {
+    background-image: url('assets/login/green_background.jpg');
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+}
+
+h1 {
+    left: 0;
+    line-height: 200px;
+    margin-top: -100px;
+    position: absolute;
+    text-align: center;
+    top: 30%;
+    width: 100%;
+    color: black;
+}
+
+.username-block {
+    left: 0;
+    line-height: 200px;
+    margin-top: -100px;
+    position: absolute;
+    text-align: center;
+    top: 35%;
+    width: 100%;
+}
+
+.password-block {
+    left: 0;
+    line-height: 200px;
+    margin-top: -100px;
+    position: absolute;
+    text-align: center;
+    top: 40%;
+    width: 100%;
+}
+
+button {
+    left: 0;
+    position: absolute;
+    text-align: center;
+    top: 45%;
+    left: 50%;
+}
+
+
+
