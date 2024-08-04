@@ -61,3 +61,75 @@
     background-color:gold;
     border-radius: 8px;
 }
+
+.features {
+    position: absolute;
+    top: 105%;
+    left: 50%;
+}
+.feat {
+    position: absolute;
+    bottom: 100%;
+    font-size: 32px;
+    font-family: sans-serif;
+}
+
+.pic-table {
+    position: absolute;
+    top: 110%;
+    left: 0%;
+}
+
+.icons {
+    padding: 0;
+    position: relative;
+    text-align: center;
+    top: 0;
+    left: 30%;
+    bottom: 0;
+    width: 50%;
+    height: 50%;
+}
+
+.handshake {
+    position: relative;
+    width: 25%;
+    height: 25%;
+    right: 50%;
+}
+
+.suggestionbox {
+    position: relative;
+    width: 25%;
+    height: 25%;
+    right: 50%;
+    border-radius: 50%;
+}
+
+.graphs {
+    position: relative;
+    width: 25%;
+    height: 25%;
+    right: 50%;
+}
+
+.robot {
+    position: relative;
+    width: 25%;
+    height: 25%;
+    right: 50%;
+}
+
+.desc-table{
+    position: absolute;
+    top: 107%;
+    left: 35%;
+}
+
+.desc {
+    position: relative;
+    font-family: sans-serif;
+    padding: 80px;
+    font-size: 32px;
+    text-align: center;
+}
