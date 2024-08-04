@@ -64,14 +64,15 @@
 
 .features {
     position: absolute;
-    top: 105%;
-    left: 50%;
+    top: 100%;
+    left: 25%;
 }
 .feat {
-    position: absolute;
+    position: relative;
     bottom: 100%;
     font-size: 32px;
     font-family: sans-serif;
+    font-style: italic;
 }
 
 .pic-table {
