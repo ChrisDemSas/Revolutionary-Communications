@@ -17,3 +17,47 @@
     width:1793px;
     height:900px;
 }
+
+.product-name{
+    position:absolute;
+    font-family:sans-serif;
+    font-size:100px;
+    left:30%;
+    top:15%;
+    color:white;
+}
+
+.slogan {
+    position:absolute;
+    font-family:sans-serif;
+    font-size:30px;
+    left:45%;
+    top:35%;
+    color:white;
+}
+
+.company {
+    font-family: sans-serif;
+    left: 0;
+    font-size: 16px;
+    position: absolute;
+    text-align: center;
+    padding: 15px 32px;
+    top: 50%;
+    left: 40%;
+    background-color:orange;
+    border-radius: 8px;
+}
+
+.community {
+    font-family: sans-serif;
+    left: 0;
+    font-size: 16px;
+    position: absolute;
+    text-align: center;
+    padding: 15px 32px;
+    top: 50%;
+    left: 50%;
+    background-color:gold;
+    border-radius: 8px;
+}
