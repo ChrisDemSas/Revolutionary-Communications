@@ -73,3 +73,10 @@ input {
     padding: 3px 5px;
 }
 
+.overlay-image {
+    position: absolute;
+    top: 25%;
+    left: 40%;
+    width: 20%;
+
+}
