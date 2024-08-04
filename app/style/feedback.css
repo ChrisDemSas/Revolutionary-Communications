@@ -1,0 +1,82 @@
+html, body{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background-color:gold;
+}
+
+h1 {
+    font-size: 50px;
+    font-family: sans-serif;
+    left: 0;
+    line-height: 200px;
+    margin-top: -100px;
+    position: absolute;
+    text-align: center;
+    top: 70%;
+    width: 100%;
+    color: black;
+}
+
+.username-block {
+    left: 0;
+    line-height: 200px;
+    margin-top: -100px;
+    position: absolute;
+    text-align: center;
+    top: 80%;
+    width: 100%;
+}
+
+.password-block {
+    left: 0;
+    line-height: 200px;
+    margin-top: -100px;
+    position: absolute;
+    text-align: center;
+    top: 85%;
+    width: 100%;
+}
+
+button {
+    font-family: sans-serif;
+    left: 0;
+    font-size: 16px;
+    position: absolute;
+    text-align: center;
+    padding: 15px 32px;
+    top: 90%;
+    left: 47%;
+    background-color:orange;
+    border-radius: 8px;
+}
+
+.background {
+    left:0;
+    line-height: 100px;
+    margin-top:-1000px;
+    margin-bottom:1000px;
+    position: absolute;
+    text-align:center;
+    top:100%;
+    width:100%;
+    padding:0;
+}
+
+input {
+    width: 20%;
+    box-sizing: border-box;
+    background-color: gainsboro;
+    border-radius: 4px;
+    padding: 3px 5px;
+}
+
+.overlay-image {
+    position: absolute;
+    top: 25%;
+    left: 40%;
+    width: 20%;
+
+}
