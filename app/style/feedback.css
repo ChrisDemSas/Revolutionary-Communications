@@ -47,9 +47,9 @@ button {
     position: absolute;
     text-align: center;
     padding: 15px 32px;
-    top: 90%;
+    top: 100%;
     left: 47%;
-    background-color:orange;
+    background-color:gold;
     border-radius: 8px;
 }
 
@@ -79,6 +79,18 @@ input {
     left: 40%;
     width: 20%;
 
+}
+
+.form {
+    position: absolute;
+    top: 83%;
+    left: 30%;
+    width: 90%;
+}
+
+textarea{
+    width: 900px;
+    height: 300px;
 }
 
 
