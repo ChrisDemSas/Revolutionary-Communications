@@ -8,14 +8,14 @@ html, body{
 }
 
 h1 {
-    font-size: 75px;
+    font-size: 50px;
     font-family: sans-serif;
     left: 0;
     line-height: 200px;
     margin-top: -100px;
     position: absolute;
     text-align: center;
-    top: 65%;
+    top: 70%;
     width: 100%;
     color: black;
 }
@@ -26,7 +26,7 @@ h1 {
     margin-top: -100px;
     position: absolute;
     text-align: center;
-    top: 75%;
+    top: 80%;
     width: 100%;
 }
 
@@ -36,7 +36,7 @@ h1 {
     margin-top: -100px;
     position: absolute;
     text-align: center;
-    top: 80%;
+    top: 85%;
     width: 100%;
 }
 
@@ -47,8 +47,8 @@ button {
     position: absolute;
     text-align: center;
     padding: 15px 32px;
-    top: 85%;
-    left: 50%;
+    top: 90%;
+    left: 47%;
     background-color:orange;
     border-radius: 8px;
 }
@@ -65,5 +65,9 @@ button {
     padding:0;
 }
 
-
+input {
+    width: 20%;
+    box-sizing: border-box;
+    background-color: grey;
+}
 
