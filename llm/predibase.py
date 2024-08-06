@@ -2,8 +2,8 @@ from predibase import Predibase, FinetuningConfig, DeploymentConfig
 import pandas as pd
 import datetime
 
-class Predibase:
-    """Implementation of the predibase class.
+class PredibaseSentiment:
+    """Implementation of the PredibaseSentiment class.
     
     Attributes:
         api_token: API Token from Predibase.
