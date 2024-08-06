@@ -13,7 +13,7 @@ def add_user() -> None:
     c = conn.cursor()
     c.execute(''' CREATE TABLE IF NOT EXISTS users(username PRIMARY KEY, password TEXT)''')
 
-    user_info = pd.DataFrame({'username': ['Company'],
+    user_info = pd.DataFrame({'username': ['Company2'],
                             'password': ['password']})
     data = {'users': user_info}
 
@@ -37,3 +37,6 @@ def login_test() -> None:
     db_filepath = 'app/databases/userinfo.db'
 
     return db.login(username, password, db_filepath)
+
+if __name__ == '__main__':
+    add_user()

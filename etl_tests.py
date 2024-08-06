@@ -7,14 +7,14 @@ from llm.predibase_sentiment import *
 def test_etl() -> None:
     """Tests the ETL Pipeline."""
 
-    API_TOKEN = 'pb_2lVSWVmcVQGkFuKPuQDvIQ'
+    API_TOKEN = ''
     database = 'app/databases/feedback.db'
 
     data = {
-        'id': [1],
-        'feedback': ['The tour group was very disrespectful to our culture.'],
-        'time': [datetime.datetime.now()],
-        'category': ['culture']
+        'id': 1,
+        'feedback': 'The tour group was very disrespectful to our culture.',
+        'time': datetime.datetime.now(),
+        'category': 'culture'
     }
 
     predibase = PredibaseSentiment(API_TOKEN, 'review-sentiment-model/3')
