@@ -3,3 +3,4 @@ pytorch
 requests
 sqlite3
 flask
+predibase
