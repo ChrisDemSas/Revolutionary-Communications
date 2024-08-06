@@ -7,7 +7,9 @@ class Predibase:
     
     Attributes:
         api_token: API Token from Predibase.
-
+        adapter_id: The ID for the adapter
+        max_new_tokens: The maximum number of tokens.
+        client: The Predibase client.
     """
 
     def __init__(self, api_token: str, adapter_id: str, max_new_tokens: int = 1000) -> None:
@@ -15,6 +17,8 @@ class Predibase:
         
         Attributes:
             api_token: API Token from Predibase.
+            adapter_id: The adapter ID.
+            max_new_tokens: The maximum number of tokens.
         """
 
         self.client = Predibase(api_token = api_token)
@@ -48,7 +52,7 @@ class Predibase:
 
         feedback = self._sentiment(data['feedback'])
         lorax_client = self.client.deployments.client("solar-1-mini-chat-240612")
-        sentiment = lorax_client.generate(feedback, adapter_id=self.adapter_id, max_new_tokens=1000).generated_text
+        sentiment = lorax_client.generate(feedback, adapter_id=self.adapter_id, max_new_tokens=self.max_new_tokens).generated_text
 
         processed_data = {
             'feedback': [data['feedback']],
