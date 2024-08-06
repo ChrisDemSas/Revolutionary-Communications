@@ -1,1 +1,1 @@
-from predibase_sentiment import *
+from .predibase_sentiment import *
