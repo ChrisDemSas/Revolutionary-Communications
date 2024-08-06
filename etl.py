@@ -29,7 +29,7 @@ def load(data: pd.DataFrame, database: str) -> None:
 
     data = {'feedbacks': data}
 
-    db.insert(data, 'app/databases/feedback.db')
+    db.insert(data, database)
 
 def etl(data: dict, database: str, analyzer: PredibaseSentiment) -> None:
     """Take in a piece of data, a database and an analyzer and perform ETL.
