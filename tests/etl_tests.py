@@ -2,8 +2,8 @@ import pandas as pd
 import sqlite3
 import filepaths as fp
 import sys
-sys.path.append(fp.UTILS_FILEPATH)
-import predibase as pb
+sys.path.append(fp.PREDIBASE_FILEPATH)
+from predibase import PredibaseSentiment
 import datetime
 
 def test_predibase() -> pd.DataFrame:
@@ -15,7 +15,7 @@ def test_predibase() -> pd.DataFrame:
         'category': ['culture']
     }
 
-    predibase = pb.PredibaseSentiment('pb_2lVSWVmcVQGkFuKPuQDvIQ', 
+    predibase = PredibaseSentiment('pb_2lVSWVmcVQGkFuKPuQDvIQ', 
                           'review-sentiment-model/3')
 
     data = predibase.sentiment(data)

@@ -1,2 +1,2 @@
 UTILS_FILEPATH = 'app/utils'
-PREDIBASE_FILEPATH = 'llm/'
+PREDIBASE_FILEPATH = 'llm'
