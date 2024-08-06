@@ -31,7 +31,7 @@ def insert(data: dict, database: str) -> None:
     
     Attributes:
         data: The dataset in dictionary format, with table name and dataframe object {table name: data}.
-        row: The row of data to be added, in this format: 
+        database: Database filepath.
     """
 
     conn = sqlite3.connect(database)
