@@ -4,6 +4,7 @@ import filepaths as fp
 import sys
 sys.path.append(fp.PREDIBASE_FILEPATH)
 from predibase_sentiment import PredibaseSentiment
+from solar import Solar
 import datetime
 
 def test_predibase() -> pd.DataFrame:
@@ -24,7 +25,23 @@ def test_predibase() -> pd.DataFrame:
 
     return data
 
-if __name__ == '__main__':
-    data = test_predibase()
+def test_solar():
+    """Tests Solar LLM."""
 
-    print(data)
+    API_TOKEN = 'up_SpqVIaeXxeM9uf8yUWxPkUUHJ2vpZ'
+    client = Solar(API_TOKEN)
+
+if __name__ == '__main__':
+    """
+    API_TOKEN = ''
+    client = Solar(API_TOKEN)
+    verdict = True
+
+    while verdict:
+        message = input('Type Message Here:')
+        response = client.message(message)
+        print(response)
+
+        if message == 'bye':
+            verdict = False
+    """
