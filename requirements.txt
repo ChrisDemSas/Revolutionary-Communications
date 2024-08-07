@@ -5,3 +5,4 @@ sqlite3
 flask
 predibase
 openai
+dash
