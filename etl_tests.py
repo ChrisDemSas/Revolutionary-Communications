@@ -4,19 +4,11 @@ import sys
 import etl
 from llm.predibase_sentiment import *
 
-def test_etl() -> None:
+def test_etl(data: dict) -> None:
     """Tests the ETL Pipeline."""
 
     API_TOKEN = ''
     database = 'app/databases/feedback.db'
-
-    data = {
-        'id': 1,
-        'community': 'Haenyo',
-        'feedback': 'The tour group was very disrespectful to our culture.',
-        'time': datetime.datetime.now(),
-        'category': 'culture'
-    }
 
     predibase = PredibaseSentiment(API_TOKEN, 'review-sentiment-model/3')
     etl.etl(data, database, predibase)
@@ -25,5 +17,21 @@ def test_etl() -> None:
 
 if __name__ == '__main__':
 
-    test = test_etl()
-    print(test)
+    feedback = [('The tour group was very disrespectful.', 'Miscellaneous'), 
+                ('The tour group was littering everywhere. Even the beaches are full of trash!', 'Environment'),
+                ('I saw a tour group try to feed animals, that is wrong.', 'Environment'), 
+                ('The tour guide failed to brief the tourists on our customs.', 'Culture'),
+                ('The tourists were very rude. Do better!', 'Miscellaneous')
+                ]
+    
+    for index, f in enumerate(feedback):
+        data = {
+        'id': index,
+        'community': 'Haenyo',
+        'category': f[1],
+        'time': datetime.datetime.now(),
+        'feedback': f[0],
+    }
+
+        test = test_etl(data)
+        print(test)
