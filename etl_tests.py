@@ -12,6 +12,7 @@ def test_etl() -> None:
 
     data = {
         'id': 1,
+        'community': 'Haenyo',
         'feedback': 'The tour group was very disrespectful to our culture.',
         'time': datetime.datetime.now(),
         'category': 'culture'

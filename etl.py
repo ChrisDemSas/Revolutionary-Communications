@@ -25,7 +25,7 @@ def load(data: pd.DataFrame, database: str) -> None:
 
     conn = sqlite3.connect(database)
     c = conn.cursor()
-    c.execute(''' CREATE TABLE IF NOT EXISTS feedbacks(id PRIMARY KEY, feedback TEXT, category TEXT, time DATETIME, sentiment INT)''')
+    c.execute(''' CREATE TABLE IF NOT EXISTS feedbacks(id PRIMARY KEY, feedback TEXT, community VARCHAR(50), category VARCHAR(50), time DATETIME, sentiment INT)''')
 
     data = {'feedbacks': data}
 
