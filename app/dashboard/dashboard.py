@@ -7,7 +7,6 @@ import plotly.express as px
 import sqlite3
 import plotly.graph_objects as go
 
-
 conn = sqlite3.connect('app/dashboard/databases/feedback.db')
 all = pd.read_sql_query("""SELECT * FROM feedbacks""", conn) # Number of feedback
 feedback_category = pd.read_sql_query("""SELECT COUNT(*) AS count, category FROM feedbacks GROUP BY category""", conn)
@@ -17,32 +16,38 @@ feedback_sentiment = pd.read_sql_query("""SELECT COUNT(sentiment) AS sentiment_c
 no_communities = pd.read_sql_query("""SELECT DISTINCT(community) AS no_community FROM feedbacks""", conn)
 
 def plot_sentiment():
-    """Plot the average sentiment."""
+    """Plot the average sentiment over time."""
 
     graph = px.line(sentiment, x = 'time', y = 'average_sentiment', 
             title="Average Sentiment Over Time")
+    graph.update_layout(margin=dict(t=50, b=0, l=0, r=0), height = 500)
 
     return graph
 
 def plot_no_feedback_per_category():
     """Plot the number of feedback from each category."""
 
-    graph = px.pie(feedback_category, values = 'count', names = 'category')
-    graph.update_layout(margin=dict(t=0, b=0, l=0, r=0))
+    graph = px.pie(feedback_category, values = 'count', names = 'category',
+                   title = "Feedback Proportions")
+    graph.update_layout(margin=dict(t=75, b=75, l=50, r=0))
 
     return graph
 
 def plot_avg_sentiment_per_category():
     """Plot average sentiment per category."""
 
-    graph = px.bar(sentiment_category, x = 'category', y = 'average_sentiment')
+    graph = px.bar(sentiment_category, x = 'category', y = 'average_sentiment',
+                   title = "Average Sentiment Per Category")
+    graph.update_layout(margin=dict(t=75, b=70, l=10, r=10))
 
     return graph
 
 def plot_feedback_sentiment():
     """Plot Sentiment distribution."""
 
-    graph = px.bar(feedback_sentiment, x = 'sentiment', y = 'sentiment_counter')
+    graph = px.bar(feedback_sentiment, x = 'sentiment', y = 'sentiment_counter',
+                   title = "Number of Feedback Per Sentiment Level")
+    graph.update_layout(margin=dict(t=75, b=70, l=10, r=10))
 
     return graph
 
@@ -54,6 +59,7 @@ def plot_no_feedback():
         value = all.shape[0],
         title = {'text': "Feedbacks"}
     ))
+    fig.update_layout(margin=dict(t=0, b=0, l=0, r=0))
 
     return fig
 
@@ -65,6 +71,7 @@ def plot_mean_sentiment():
         value = all['sentiment'].mean(axis = 0),
         title = {'text': "Average Sentiment"}
     ))
+    fig.update_layout(margin=dict(t=0, b=0, l=0, r=0))
 
     return fig
 
@@ -76,6 +83,7 @@ def plot_no_communities():
         value = no_communities.shape[0],
         title = {"text": "Number of Communities"}
     ))
+    fig.update_layout(margin=dict(t=0, b=0, l=0, r=0))
 
     return fig
 
@@ -87,18 +95,19 @@ dashboard.layout = html.Div(
     html.H1("Welcome!"),
     html.Br(),
 
-    html.Div(children = [dcc.Graph(id = "no-feedback", figure = plot_no_feedback(), style={'display': 'inline-block', 'width': '30%'}),
-            dcc.Graph(id = "mean-sentiment", figure = plot_mean_sentiment(), style={'display': 'inline-block', 'width': '30%'}),
-            dcc.Graph(id = "no-communities", figure = plot_no_communities(), style={'display': 'inline-block', 'width': '30%'})
-            
+    html.Div(children = [dcc.Graph(id = "no-feedback", figure = plot_no_feedback(), style={'display': 'inline-block', 'width': '33%'}),
+            dcc.Graph(id = "mean-sentiment", figure = plot_mean_sentiment(), style={'display': 'inline-block', 'width': '33%'}),
+            dcc.Graph(id = "no-communities", figure = plot_no_communities(), style={'display': 'inline-block', 'width': '34%'})            
+            ]),
+
+    html.Div(children = [dcc.Graph(id="no-feedback-sentiment", figure = plot_feedback_sentiment(), style={'display': 'inline-block', 'width': '33%', 'height': '100%'}), 
+            dcc.Graph(id="no-avg-feedback", figure = plot_avg_sentiment_per_category(), style={'display': 'inline-block', 'width': '33%', 'height': '100%'}),
+            dcc.Graph(id = "category-feedback", figure = plot_no_feedback_per_category(), style={'display': 'inline-block', 'width': '34%', 'height': '100%'})
             ]),
 
     html.Div(children = [
-        dcc.Graph(id="sentiment", figure = plot_sentiment(), style = {'display': 'inline-block', 'width': '70%', 'height': '100%'}),
-        dcc.Graph(id = "category-feedback1", figure = plot_no_feedback_per_category(), style={'display': 'inline-block', 'width': '30%', 'height': '100%'})]),
-
-    html.Div(children = [dcc.Graph(id="no-feedback-sentiment", figure = plot_feedback_sentiment(), style={'display': 'inline-block', 'width': '50%', 'height': '100%'}), 
-            dcc.Graph(id="no-avg-feedback", figure = plot_avg_sentiment_per_category(), style={'display': 'inline-block', 'width': '50%', 'height': '100%'})])
+        dcc.Graph(id="sentiment", figure = plot_sentiment(), style = {'display': 'inline-block', 'width': '90%', 'height': '100%'}),        
+        ])
     ]
 
     )

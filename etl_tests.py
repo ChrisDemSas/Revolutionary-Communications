@@ -7,7 +7,7 @@ from llm.predibase_sentiment import *
 def test_etl(data: dict) -> None:
     """Tests the ETL Pipeline."""
 
-    API_TOKEN = 'pb_2lVSWVmcVQGkFuKPuQDvIQ'
+    API_TOKEN = ''
     database = 'app/dashboard/databases/feedback.db'
 
     predibase = PredibaseSentiment(API_TOKEN, 'review-sentiment-model/3')
