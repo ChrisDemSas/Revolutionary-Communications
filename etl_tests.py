@@ -7,8 +7,8 @@ from llm.predibase_sentiment import *
 def test_etl(data: dict) -> None:
     """Tests the ETL Pipeline."""
 
-    API_TOKEN = ''
-    database = 'app/databases/feedback.db'
+    API_TOKEN = 'pb_2lVSWVmcVQGkFuKPuQDvIQ'
+    database = 'app/dashboard/databases/feedback.db'
 
     predibase = PredibaseSentiment(API_TOKEN, 'review-sentiment-model/3')
     etl.etl(data, database, predibase)
@@ -26,8 +26,8 @@ if __name__ == '__main__':
     
     for index, f in enumerate(feedback):
         data = {
-        'id': index + 8,
-        'community': 'Haenyo',
+        'id': index,
+        'community': 'Haenyeo',
         'category': f[1],
         'time': datetime.datetime.now(),
         'feedback': f[0]

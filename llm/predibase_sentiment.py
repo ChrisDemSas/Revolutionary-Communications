@@ -58,7 +58,8 @@ class PredibaseSentiment:
             'feedback': [data['feedback']],
             'time': [data['time']],
             'category': [data['category']],
-            'sentiment': [int(sentiment)]
+            'sentiment': [int(sentiment)],
+            'community': [data['community']]
         }
 
         return pd.DataFrame(processed_data)

@@ -41,6 +41,5 @@ def etl(data: dict, database: str, analyzer: PredibaseSentiment) -> None:
     """
 
     data = transform(data, analyzer)
-    print(data)
     load(data, database)
     
