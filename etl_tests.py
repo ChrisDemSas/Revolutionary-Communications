@@ -30,7 +30,7 @@ if __name__ == '__main__':
         'community': 'Haenyo',
         'category': f[1],
         'time': datetime.datetime.now(),
-        'feedback': f[0],
+        'feedback': f[0]
     }
 
         test = test_etl(data)
