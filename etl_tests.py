@@ -17,16 +17,16 @@ def test_etl(data: dict) -> None:
 
 if __name__ == '__main__':
 
-    feedback = [('The tour group was very disrespectful.', 'Miscellaneous'), 
-                ('The tour group was littering everywhere. Even the beaches are full of trash!', 'Environment'),
-                ('I saw a tour group try to feed animals, that is wrong.', 'Environment'), 
-                ('The tour guide failed to brief the tourists on our customs.', 'Culture'),
-                ('The tourists were very rude. Do better!', 'Miscellaneous')
+    feedback = [('The tour group was slighty disrespectful.', 'Miscellaneous'), 
+                ('The tour guide started picking up litter. A little better than before.', 'Environment'),
+                ('It seems the tour guide has better briefed the tourists on their environmental impacts.', 'Environment'), 
+                ('The tour guide did a better job in telling the tourists to respect our culture.', 'Culture'),
+                ('The tour company has started to give us incentives. A better change than before.', 'Miscellaneous')
                 ]
     
     for index, f in enumerate(feedback):
         data = {
-        'id': index,
+        'id': index + 8,
         'community': 'Haenyo',
         'category': f[1],
         'time': datetime.datetime.now(),

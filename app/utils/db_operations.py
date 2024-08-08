@@ -39,3 +39,6 @@ def insert(data: dict, database: str) -> None:
     for item in data:
         curr = data[item]
         curr.to_sql(item, con = conn, if_exists = 'append', index = False)
+    
+    conn.commit()
+    conn.close()
