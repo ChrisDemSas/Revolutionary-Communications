@@ -59,7 +59,7 @@ def plot_no_feedback():
         value = all.shape[0],
         title = {'text': "Feedbacks"}
     ))
-    fig.update_layout(margin=dict(t=0, b=0, l=0, r=0))
+    fig.update_layout(margin=dict(t=0, b=0, l=0, r=0), height=200)
 
     return fig
 
@@ -71,7 +71,7 @@ def plot_mean_sentiment():
         value = all['sentiment'].mean(axis = 0),
         title = {'text': "Average Sentiment"}
     ))
-    fig.update_layout(margin=dict(t=0, b=0, l=0, r=0))
+    fig.update_layout(margin=dict(t=0, b=0, l=0, r=0), height=200)
 
     return fig
 
@@ -83,7 +83,7 @@ def plot_no_communities():
         value = no_communities.shape[0],
         title = {"text": "Number of Communities"}
     ))
-    fig.update_layout(margin=dict(t=0, b=0, l=0, r=0))
+    fig.update_layout(margin=dict(t=0, b=0, l=0, r=0), height=200)
 
     return fig
 
