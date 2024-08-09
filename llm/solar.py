@@ -3,7 +3,10 @@ from openai import OpenAI
 class Solar:
     """Implementation of the Solar LLM Class.
     
-    
+    Attributes:
+        api_key: The API Key.
+        client: Client for communicating with Solar.
+        model: The solar model (set at solar-1-mini-chat)
     """
 
     def __init__(self, api_key: str) -> None:

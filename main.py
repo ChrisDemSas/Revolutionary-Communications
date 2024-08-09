@@ -30,5 +30,13 @@ def render_reports():
 
 server = DispatcherMiddleware(app, {'/dashboard': dashboard.server})
 
+@app.route('/get', methods=['GET', 'POST'])
+def plan():
+    msg = request.form["msg"]
+    input = """Insert Prompt Here."""
+    return get_Chat_response(input) # Chat Response here
+
+def get_Chat_response(text: str)
+
 if __name__ == '__main__':
     app.run(debug=True)
