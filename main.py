@@ -7,36 +7,42 @@ from dash import html
 from app_init import app
 from app.dashboard.dashboard import dashboard
 
-#app = Flask(__name__, static_folder = 'app/style', template_folder='app')
-#dashboard = Dash(__name__, server = app, url_base_pathname='/dashboard/')
-#dashboard.layout = html.Div([html.H1('Hi there, I am Dash1')])
-
-
 @app.route('/')
-def home():
+def home() -> None:
+    """Return the landing page."""
     return render_template('index.html')
 
 @app.route('/login')
-def login():
+def login() -> None:
+    """Return the login page."""
     return render_template('login.html')
 
 @app.route('/feedback')
-def feedback():
+def feedback() -> None:
+    """Return the Feedback page."""
     return render_template('feedback.html')
 
 @app.route('/reports/')
-def render_reports():
+def render_reports() -> None:
+    """Return the dashboard page."""
     return flask.redirect('/dashboard')
 
 server = DispatcherMiddleware(app, {'/dashboard': dashboard.server})
 
 @app.route('/get', methods=['GET', 'POST'])
-def plan():
+def plan() -> str:
+    """Return one chat with the Solar LLM."""
     msg = request.form["msg"]
     input = """Insert Prompt Here."""
     return get_Chat_response(input) # Chat Response here
 
-def get_Chat_response(text: str)
+def get_Chat_response(text: str) -> str:
+    """Take in an input and return the response.
+    
+    Attributes:
+        text: The text that is transmitted to Solar LLM.
+    """
+
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -43,6 +43,9 @@ class Solar:
             stream = True
         )
 
+        response = ""
+
         for chunk in stream:
             if chunk.choices[0].delta.content is not None:
-                print(chunk.choices[0].delta.content, end="")
+                response += chunk.choices[0].delta.content
+        return response
