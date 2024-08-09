@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask with Python Function</title>
+</head>
+<body>
+    <h1>Brainstorm A Plan</h1>
+    <button id="generate-button">Generate</button>
+    <div id="response"></div>
+
+    <script>
+        document.getElementById("generate-button").addEventListener("click", async function() {
+            const response = await fetch("/generate", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            });
+
+            const data = await response.json();
+            document.getElementById("response").innerText = data.response;
+        });
+    </script>
+</body>
+</html>
