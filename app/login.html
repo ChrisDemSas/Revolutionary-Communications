@@ -13,7 +13,7 @@
 
     <h1>Login</h1>
 
-    <form action="/action_page.php">
+    <form action="/authenticate" method="POST">
     <div class="username-block">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required><br>
@@ -21,10 +21,31 @@
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required>
 
-        <button type="submit">Login</button>
+        <button type="submit" onclick="authenticate()">Login</button>
     </div>
     </form>
 </div>
+
+<script>
+    function authenticate() {
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+
+        const data = new URLSearchParams({
+            "username": username,
+            "password": password
+        })
+
+        fetch("/authenticate", {
+            method: "POST",
+            "Content-Type": "application/x-www-form-urlencoded",
+            body: data
+
+        })
+        .then(response => response.json())
+    }
+
+</script>
 
 </body>
 </html>

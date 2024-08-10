@@ -48,7 +48,6 @@
         })
         .then(response => response.json())
         .then(data => {
-            // Append the bot's response
             chatbox.innerHTML += `<div class="message bot">${data.response}</div>`;
             chatbox.scrollTop = chatbox.scrollHeight;
         });

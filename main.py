@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 from dash import Dash
+import flask
 from werkzeug.middleware.dispatcher import DispatcherMiddleware
 from werkzeug.serving import run_simple
 from dash import html
@@ -16,11 +17,21 @@ def home() -> None:
 
     return render_template('index.html')
 
-@app.route('/login')
+@app.route('/login', methods = ['POST', 'GET'])
 def login() -> None:
     """Return the login page."""
 
     return render_template('login.html')
+
+@app.route('/authenticate', methods = ['POST', 'GET'])
+def authenticate() -> None:
+    """Authenticate the user."""
+
+    username = request.form['username']
+    password = request.form['password']
+
+    if (username == 'Company1') and (password == 'password'):
+        return flask.redirect('/reports/')
 
 @app.route('/feedback')
 def feedback() -> None:
@@ -28,7 +39,7 @@ def feedback() -> None:
 
     return render_template('feedback.html')
 
-@app.route('/reports/')
+@app.route('/reports/', methods = ['GET', 'POST'])
 def render_reports() -> None:
     """Return the dashboard page."""
 
