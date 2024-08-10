@@ -6,4 +6,3 @@ flask
 predibase
 openai
 dash
-pyscript
