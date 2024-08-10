@@ -7,9 +7,17 @@ from dash import html
 from app_init import app
 from app.dashboard.dashboard import dashboard
 from llm.solar import Solar
+import datetime
+from etl import etl
+from llm.predibase_sentiment import PredibaseSentiment
 
-API_KEY = ''
-solar = Solar(API_KEY)
+
+SOLAR_API_KEY = ''
+solar = Solar(SOLAR_API_KEY)
+
+PREDIBASE_API_KEY = ''
+ADAPTER = ''
+predibase = PredibaseSentiment(PREDIBASE_API_KEY, ADAPTER)
 
 @app.route('/')
 def home() -> None:
@@ -36,6 +44,26 @@ def authenticate() -> None:
 @app.route('/feedback')
 def feedback() -> None:
     """Return the Feedback page."""
+
+    return render_template('feedback.html')
+
+@app.route('/submit_feedback', methods = ['POST', 'GET'])
+def submit_feedback() -> None:
+    """Submit a feedback and load to a database."""
+
+    category = request.form['category']
+    community = request.form['community']
+    feedback = request.form['feedback']
+    todays_date = datetime.datetime.now()
+
+    data = {
+        'category': category,
+        'community': community,
+        'feedback': feedback,
+        'time': todays_date
+    }
+
+    etl(data, 'app/databases/feedback.db', predibase)
 
     return render_template('feedback.html')
 

@@ -11,7 +11,7 @@
 </div>
 <h1>Your voice matters!</h1>
 <div class="form">
-    <form action="/action_page.php">
+    <form action="/submit_feedback", method="POST">
     <label for="company"></label>
     <select id="company" name="company">
         <option value="select">Select a Company</option>
@@ -25,20 +25,43 @@
     </select>
     <select id="category" name="category">
         <option value="select">Select a Category</option>
-        <option value="environment">Environment</option>
-        <option value="economic">Economic</option>
-        <option value="cultural">Cultural</option>
-        <option value="treatment">Treatment</option>
-        <option value="miscellaneous">Miscellaneous</option>
+        <option value="Environment">Environment</option>
+        <option value="Economic">Economic</option>
+        <option value="Cultural">Cultural</option>
+        <option value="Treatment">Treatment</option>
+        <option value="Miscellaneous">Miscellaneous</option>
     </select>
     </select><br><br>
     <textarea name="feedback">
     </textarea><br>
 
-    <button type="submit"> Submit </button>
+    <button type="submit", onclick="submit_feedback()"> Submit </button>
     </form>
 </div>
 
+<script>
+    function submit_feedback() {
+        const community = document.getElementById("community").value;
+        const category = document.getElementById("category").value;
+        const feedback = document.getElementById("feedback").value;
+
+
+        const data = new URLSearchParams({
+            "community": community,
+            "category": category,
+            "feedback": feedback
+        })
+
+        fetch("/authenticate", {
+            method: "POST",
+            "Content-Type": "application/x-www-form-urlencoded",
+            body: data
+
+        })
+        .then(response => response.json())
+    }
+
+</script>
 </body>
 </html>
 

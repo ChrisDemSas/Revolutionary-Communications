@@ -7,7 +7,7 @@ import plotly.express as px
 import sqlite3
 import plotly.graph_objects as go
 
-conn = sqlite3.connect('app/dashboard/databases/feedback.db')
+conn = sqlite3.connect('app/databases/feedback.db')
 all = pd.read_sql_query("""SELECT * FROM feedbacks""", conn) # Number of feedback
 feedback_category = pd.read_sql_query("""SELECT COUNT(*) AS count, category FROM feedbacks GROUP BY category""", conn)
 sentiment = pd.read_sql_query("""SELECT AVG(sentiment) AS average_sentiment, time FROM feedbacks GROUP BY time""", conn)
