@@ -12,11 +12,11 @@ from etl import etl
 from llm.predibase_sentiment import PredibaseSentiment
 
 
-SOLAR_API_KEY = 'up_SpqVIaeXxeM9uf8yUWxPkUUHJ2vpZ'
+SOLAR_API_KEY = ''
 solar = Solar(SOLAR_API_KEY)
 
-PREDIBASE_API_KEY = 'pb_2lVSWVmcVQGkFuKPuQDvIQ'
-ADAPTER = 'review-sentiment-model/3'
+PREDIBASE_API_KEY = ''
+ADAPTER = 'r'
 predibase = PredibaseSentiment(PREDIBASE_API_KEY, ADAPTER)
 
 @app.route('/')
