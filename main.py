@@ -12,11 +12,11 @@ from etl import etl
 from llm.predibase_sentiment import PredibaseSentiment
 
 
-SOLAR_API_KEY = ''
+SOLAR_API_KEY = 'up_SpqVIaeXxeM9uf8yUWxPkUUHJ2vpZ'
 solar = Solar(SOLAR_API_KEY)
 
-PREDIBASE_API_KEY = ''
-ADAPTER = ''
+PREDIBASE_API_KEY = 'pb_2lVSWVmcVQGkFuKPuQDvIQ'
+ADAPTER = 'review-sentiment-model/3'
 predibase = PredibaseSentiment(PREDIBASE_API_KEY, ADAPTER)
 
 @app.route('/')
@@ -82,7 +82,6 @@ def plan() -> None:
     return render_template('plan.html')
 
 @app.route('/generate', methods=['POST'])
-
 def generate() -> dict:
     """Generate a plan for the current problems."""
 

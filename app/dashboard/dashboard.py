@@ -6,6 +6,7 @@ import pandas as pd
 import plotly.express as px
 import sqlite3
 import plotly.graph_objects as go
+import dash_bootstrap_components as dbc
 
 conn = sqlite3.connect('app/databases/feedback.db')
 all = pd.read_sql_query("""SELECT * FROM feedbacks""", conn) # Number of feedback
@@ -106,8 +107,9 @@ dashboard.layout = html.Div(
             ], style={'textAlign': 'center'}),
 
     html.Div(children = [dcc.Graph(id="sentiment", figure = plot_sentiment(), style = {'display': 'inline-block', 'width': '75%', 'height': '100%'})], 
-             style={'textAlign': 'center'}),        
-        
+             style={'textAlign': 'center'}),   
+
+    html.A(html.Button("Chat"), href="/plan", target="_blank")
     ]
 
     )

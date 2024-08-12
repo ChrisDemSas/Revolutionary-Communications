@@ -6,3 +6,4 @@ flask
 predibase
 openai
 dash
+dash_bootstrap_components
