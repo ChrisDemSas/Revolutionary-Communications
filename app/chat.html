@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/dashboard/assets/chat.css">
+</head>
+<body>
+    <h1>AI Chat</h1>
+
+<div class="chatbox" id="chatbox">
+    <div class="chat-header">Chat</div>
+    <div class="chat-messages">
+        <div class="message-recieved">
+            Hello! How can I help you today?
+        </div>
+    </div>
+
+</div>
+
+<div class="input-box">
+    <input type="text" id="userInput" placeholder="Type your message here..." autocomplete="off">
+    <button onclick="sendMessage()">Send</button>
+</div>
+
+<script>
+    function sendMessage() {
+        const userMessage = document.getElementById("userInput").value;
+        if (userMessage.trim() === "") return;
+
+        const chatbox = document.getElementById("chatbox");
+
+        chatbox.innerHTML += `<div class="message user">User: ${userMessage}</div>`;
+        document.getElementById("userInput").value = "";
+
+        fetch("/get_response", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: `message=${userMessage}`
+        })
+        .then(response => response.json())
+        .then(data => {
+            chatbox.innerHTML += `<div class="message bot">${data.response}</div>`;
+            chatbox.scrollTop = chatbox.scrollHeight;
+        });
+    }
+</script>
+
+</body>
+</html>

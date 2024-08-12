@@ -89,7 +89,7 @@ def plot_no_communities():
     return fig
 
 # Use dcc.Dropdown for dropdown menu
-dashboard = Dash(__name__, server = app, url_base_pathname='/dashboard/')
+dashboard = Dash(__name__, server = app, routes_pathname_prefix = '/dashboard/')
 
 dashboard.layout = html.Div(
     [

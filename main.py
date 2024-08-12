@@ -16,7 +16,7 @@ SOLAR_API_KEY = ''
 solar = Solar(SOLAR_API_KEY)
 
 PREDIBASE_API_KEY = ''
-ADAPTER = 'r'
+ADAPTER = 'review-sentiment-model/3'
 predibase = PredibaseSentiment(PREDIBASE_API_KEY, ADAPTER)
 
 @app.route('/')
@@ -93,7 +93,7 @@ def generate() -> dict:
         The tour group was littering all over.
         The tour company didn't fulfill their end of the bargain. They're promoting their packages at our economic expense.
 
-    What 5 solutions can you suggest to the tour company to resolve these complaints to make their tour packages more sustainable and appease the local community? 
+    What are 10 detailed solutions can you suggest to the tour company to resolve these complaints to make their tour packages more sustainable and appease the local community? 
     """
 
     result = solar.message(PROMPT)
@@ -109,6 +109,12 @@ def chat() -> dict:
     text = f"Solar: {solar.message_chat(message)}"
 
     return jsonify({"response": text})
+
+@app.route('/chatbot')
+def chatbot() -> None:
+    """Render the chatbot page."""
+
+    return render_template("chat.html")
 
 
 if __name__ == '__main__':

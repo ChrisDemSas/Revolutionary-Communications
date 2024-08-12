@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/plan.css">
+    <link rel="stylesheet" href="/dashboard/assets/plan.css">
 </head>
 <body>
     <h1>Brainstorm A Plan</h1>
@@ -23,36 +21,6 @@
             document.getElementById("response").innerText = data.response;
         });
     </script>
-
-<div class="chatbox" id="chatbox">
-</div>
-<div class="input-box">
-    <input type="text" id="userInput" placeholder="Type your message here..." autocomplete="off">
-    <button onclick="sendMessage()">Send</button>
-</div>
-
-<script>
-    function sendMessage() {
-        const userMessage = document.getElementById("userInput").value;
-        if (userMessage.trim() === "") return;
-
-        const chatbox = document.getElementById("chatbox");
-
-        chatbox.innerHTML += `<div class="message user">User: ${userMessage}</div>`;
-        document.getElementById("userInput").value = "";
-
-        fetch("/get_response", {
-            method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: `message=${userMessage}`
-        })
-        .then(response => response.json())
-        .then(data => {
-            chatbox.innerHTML += `<div class="message bot">${data.response}</div>`;
-            chatbox.scrollTop = chatbox.scrollHeight;
-        });
-    }
-</script>
 
 </body>
 </html>
