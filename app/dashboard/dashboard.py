@@ -94,9 +94,9 @@ dashboard = Dash(__name__, server = app, routes_pathname_prefix = '/dashboard/')
 dashboard.layout = html.Div(
     [
     html.Div(children = [html.H1("Welcome!", style={'textAlign': 'center'}), 
-                        html.A(html.Button("Dashboard"), href="/dashboard/", target="_blank", id="dashboard-button-d"),
-                        html.A(html.Button("Brainstorm"), href="/plan", target="_blank", id="brainstorm-button-d"),
-                        html.A(html.Button("Chat"), href="/chatbot", target="_blank", id="chat-button-d")], id="container")
+                        html.A(html.Button("Dashboard", id="dashboard-button-d"), href="/dashboard/", target="_blank"),
+                        html.A(html.Button("Brainstorm", id="brainstorm-button-d"), href="/plan", target="_blank"),
+                        html.A(html.Button("Chat", id="chat-button-d"), href="/chatbot", target="_blank")], id="container")
              ,
     html.Br(),
 
