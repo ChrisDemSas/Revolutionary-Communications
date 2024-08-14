@@ -31,16 +31,18 @@ h1 {
 }
 
 button {
-    font-family: sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
     left: 0;
     font-size: 16px;
     position: absolute;
     text-align: center;
     padding: 15px 32px;
-    top: 90%;
+    top: 95%;
     left: 47%;
     background-color:orange;
-    border-radius: 8px;
+    border-radius: 16px;
+    border: solid orange 1px;
 }
 
 .background {

@@ -13,7 +13,8 @@ h1 {
 }
 
 #generate-button {
-    font-family: sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
     left: 0;
     font-size: 16px;
     position: absolute;
@@ -22,7 +23,9 @@ h1 {
     top: 75%;
     left: 45%;
     background-color:orange;
-    border-radius: 8px;
+    border-radius: 16px;
+    border-color: orange;
+    border: solid orange 1px;
 }
 
 #response {
@@ -38,7 +41,8 @@ h1 {
 }
 
 #dashboard-button {
-    font-family: sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
     left: 0;
     font-size: 25px;
     position: absolute;
@@ -47,11 +51,13 @@ h1 {
     top: 50%;
     left: 20%;
     background-color:orange;
-    border-radius: 8px;
+    border-radius: 16px;
+    border: solid orange 1px;
 }
 
 #brainstorm-button {
-    font-family: sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
     left: 0;
     font-size: 25px;
     position: absolute;
@@ -60,11 +66,13 @@ h1 {
     top: 50%;
     left: 43%;
     background-color:yellow;
-    border-radius: 8px;
+    border-radius: 16px;
+    border: solid yellow 1px;
 }
 
 #chat-button {
-    font-family: sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
     left: 0;
     font-size: 25px;
     position: absolute;
@@ -74,6 +82,7 @@ h1 {
     left: 66%;
     background-color:orange;
     border-radius: 8px;
+    border: solid orange 1px;
 }
 
 #container {
@@ -163,7 +172,8 @@ h1 {
 }
 
 #brainstorm-button-d {
-    font-family: sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
     left: 0;
     font-size: 25px;
     position: absolute;
@@ -172,11 +182,13 @@ h1 {
     top: 50%;
     left: 43%;
     background-color:orange;
-    border-radius: 8px;
+    border-radius: 16px;
+    border: solid orange 1px;
 }
 
 #dashboard-button-d {
-    font-family: sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
     left: 0;
     font-size: 25px;
     position: absolute;
@@ -185,11 +197,13 @@ h1 {
     top: 50%;
     left: 20%;
     background-color:yellow;
-    border-radius: 8px;
+    border-radius: 16px;
+    border: solid yellow 1px;
 }
 
 #chat-button-d {
-    font-family: sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
     left: 0;
     font-size: 25px;
     position: absolute;
@@ -198,5 +212,6 @@ h1 {
     top: 50%;
     left: 66%;
     background-color:orange;
-    border-radius: 8px;
+    border-radius: 16px;
+    border: solid orange 1px;
 }
