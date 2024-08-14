@@ -20,7 +20,7 @@ def plot_sentiment():
     """Plot the average sentiment over time."""
 
     graph = px.line(sentiment, x = 'time', y = 'average_sentiment', 
-            title="Average Sentiment Over Time")
+            title="Average Sentiment Rating Over Time")
     graph.update_layout(margin=dict(t=50, b=0, l=0, r=0), height = 500, template='simple_white')
 
     return graph
@@ -38,7 +38,7 @@ def plot_avg_sentiment_per_category():
     """Plot average sentiment per category."""
 
     graph = px.bar(sentiment_category, x = 'category', y = 'average_sentiment',
-                   title = "Average Sentiment Per Category")
+                   title = "Average Sentiment Rating Per Category")
     graph.update_layout(margin=dict(t=75, b=70, l=10, r=10), template='simple_white')
 
     return graph
@@ -47,7 +47,7 @@ def plot_feedback_sentiment():
     """Plot Sentiment distribution."""
 
     graph = px.bar(feedback_sentiment, x = 'sentiment', y = 'sentiment_counter',
-                   title = "Number of Feedback Per Sentiment Level")
+                   title = "Number of Feedback Per Sentiment Rating")
     graph.update_layout(margin=dict(t=75, b=70, l=10, r=10), template='simple_white')
 
     return graph
@@ -70,7 +70,7 @@ def plot_mean_sentiment():
     fig = go.Figure(go.Indicator(
         mode = "number",
         value = all['sentiment'].mean(axis = 0),
-        title = {'text': "Average Sentiment"}
+        title = {'text': "Average Sentiment Rating"}
     ))
     fig.update_layout(margin=dict(t=0, b=0, l=0, r=0), height=200)
 
@@ -82,7 +82,7 @@ def plot_no_communities():
     fig = go.Figure(go.Indicator(
         mode = "number",
         value = no_communities.shape[0],
-        title = {"text": "Number of Communities"}
+        title = {"text": "Number of Communities Served"}
     ))
     fig.update_layout(margin=dict(t=0, b=0, l=0, r=0), height=200)
 

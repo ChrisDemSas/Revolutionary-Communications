@@ -54,7 +54,8 @@ def submit_feedback() -> None:
     category = request.form['category']
     community = request.form['community']
     feedback = request.form['feedback']
-    todays_date = datetime.datetime.now()
+    todays_date = datetime.datetime.today().strftime('%Y-%m-%d')
+    todays_date = datetime.datetime.strptime(todays_date, '%Y-%m-%d')
 
     data = {
         'category': category,

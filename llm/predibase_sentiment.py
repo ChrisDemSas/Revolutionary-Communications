@@ -54,6 +54,11 @@ class PredibaseSentiment:
         lorax_client = self.client.deployments.client("solar-1-mini-chat-240612")
         sentiment = lorax_client.generate(feedback, adapter_id=self.adapter_id, max_new_tokens=self.max_new_tokens).generated_text
 
+        if int(sentiment) > 10:
+            sentiment = 10
+        elif int(sentiment) < 1:
+            sentiment = 1
+
         processed_data = {
             'feedback': [data['feedback']],
             'time': [data['time']],
