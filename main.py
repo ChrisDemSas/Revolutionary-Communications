@@ -16,7 +16,7 @@ SOLAR_API_KEY = ''
 solar = Solar(SOLAR_API_KEY)
 
 PREDIBASE_API_KEY = ''
-ADAPTER = 'review-sentiment-model/3'
+ADAPTER = ''
 predibase = PredibaseSentiment(PREDIBASE_API_KEY, ADAPTER)
 
 @app.route('/')
@@ -94,6 +94,7 @@ def generate() -> dict:
         The tour company didn't fulfill their end of the bargain. They're promoting their packages at our economic expense.
 
     What are 10 detailed solutions can you suggest to the tour company to resolve these complaints to make their tour packages more sustainable and appease the local community? 
+    Make sure the solutions deal primarily with the tour company and tourists, and not the local community. 
     """
 
     result = solar.message(PROMPT)

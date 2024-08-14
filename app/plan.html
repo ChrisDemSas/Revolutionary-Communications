@@ -4,9 +4,24 @@
     <link rel="stylesheet" href="/dashboard/assets/plan.css">
 </head>
 <body>
-    <h1>Brainstorm A Plan</h1>
-    <button id="generate-button">Generate</button>
+    <div id="container">
+        <div id="title">    
+        <h1>Brainstorm A Plan</h1>
+        </div>
+        <a href="{{ url_for('/dashboard/') }}">
+        <button id="dashboard-button">Dashboard</button>
+        </a>
+        <a href="{{ url_for('plan') }}">
+        <button id="brainstorm-button">Brainstorm</button>
+        </a>
+        <a href="{{ url_for('chatbot') }}">
+        <button id="chat-button">Chat</button>
+        </a>  
+    </div>  
+    <button id="generate-button">Generate Some Ideas</button>
+
     <div id="response"></div>
+    
 
     <script>
         document.getElementById("generate-button").addEventListener("click", async function() {

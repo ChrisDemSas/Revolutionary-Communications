@@ -93,23 +93,25 @@ dashboard = Dash(__name__, server = app, routes_pathname_prefix = '/dashboard/')
 
 dashboard.layout = html.Div(
     [
-    html.H1("Welcome!", style={'textAlign': 'center'}),
+    html.Div(children = [html.H1("Welcome!", style={'textAlign': 'center'}), 
+                        html.A(html.Button("Dashboard"), href="/dashboard/", target="_blank", id="dashboard-button-d"),
+                        html.A(html.Button("Brainstorm"), href="/plan", target="_blank", id="brainstorm-button-d"),
+                        html.A(html.Button("Chat"), href="/chatbot", target="_blank", id="chat-button-d")], id="container")
+             ,
     html.Br(),
 
-    html.Div(children = [dcc.Graph(id = "no-feedback", figure = plot_no_feedback(), style={'display': 'inline-block', 'width': '25%'}),
-            dcc.Graph(id = "mean-sentiment", figure = plot_mean_sentiment(), style={'display': 'inline-block', 'width': '25%'}),
-            dcc.Graph(id = "no-communities", figure = plot_no_communities(), style={'display': 'inline-block', 'width': '25%'})            
+    html.Div(children = [dcc.Graph(id = "no-feedback", figure = plot_no_feedback()),
+            dcc.Graph(id = "mean-sentiment", figure = plot_mean_sentiment()),
+            dcc.Graph(id = "no-communities", figure = plot_no_communities())            
             ], style={'textAlign': 'center'}),
 
-    html.Div(children = [dcc.Graph(id="no-feedback-sentiment", figure = plot_feedback_sentiment(), style={'display': 'inline-block', 'width': '25%', 'height': '100%'}), 
-            dcc.Graph(id="no-avg-feedback", figure = plot_avg_sentiment_per_category(), style={'display': 'inline-block', 'width': '25%', 'height': '100%'}),
-            dcc.Graph(id = "category-feedback", figure = plot_no_feedback_per_category(), style={'display': 'inline-block', 'width': '25%', 'height': '100%'})
+    html.Div(children = [dcc.Graph(id="no-feedback-sentiment", figure = plot_feedback_sentiment()), 
+            dcc.Graph(id="no-avg-feedback", figure = plot_avg_sentiment_per_category()),
+            dcc.Graph(id = "category-feedback", figure = plot_no_feedback_per_category())
             ], style={'textAlign': 'center'}),
 
-    html.Div(children = [dcc.Graph(id="sentiment", figure = plot_sentiment(), style = {'display': 'inline-block', 'width': '75%', 'height': '100%'})], 
-             style={'textAlign': 'center'}),   
-
-    html.A(html.Button("Chat"), href="/plan", target="_blank")
+    html.Div(children = [dcc.Graph(id="sentiment", figure = plot_sentiment())], 
+             style={'textAlign': 'center'})
     ]
 
     )

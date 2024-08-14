@@ -1,11 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="/dashboard/assets/chat.css">
+    <link rel="stylesheet" href="style/chat.css">
 </head>
 <body>
-    <h1>AI Chat</h1>
+    <div id="container">
+        <div id="title">    
+        <h1>Finetune Your Ideas</h1>
+        </div>
+        <a href="{{ url_for('/dashboard/') }}">
+        <button id="dashboard-button">Dashboard</button>
+        </a>
+        <a href="{{ url_for('plan') }}">
+        <button id="brainstorm-button">Brainstorm</button>
+        </a>
+        <a href="{{ url_for('chatbot') }}">
+        <button id="chat-button">Chat</button>
+        </a>  
+    </div>  
 
+<div class="chat-container" id="chat-container">
 <div class="chatbox" id="chatbox">
     <div class="chat-header">Chat</div>
     <div class="chat-messages">
@@ -21,6 +35,7 @@
     <button onclick="sendMessage()">Send</button>
 </div>
 
+</div>
 <script>
     function sendMessage() {
         const userMessage = document.getElementById("userInput").value;
