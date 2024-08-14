@@ -9,17 +9,19 @@ import plotly.graph_objects as go
 import dash_bootstrap_components as dbc
 
 conn = sqlite3.connect('app/databases/feedback.db')
-all = pd.read_sql_query("""SELECT * FROM feedbacks""", conn) # Number of feedback
-feedback_category = pd.read_sql_query("""SELECT COUNT(*) AS count, category FROM feedbacks GROUP BY category""", conn)
-sentiment = pd.read_sql_query("""SELECT AVG(sentiment) AS average_sentiment, time FROM feedbacks GROUP BY time""", conn)
-sentiment_category = pd.read_sql_query("""SELECT AVG(sentiment) AS average_sentiment, category FROM feedbacks GROUP BY category""", conn)
-feedback_sentiment = pd.read_sql_query("""SELECT COUNT(sentiment) AS sentiment_counter, sentiment FROM feedbacks GROUP BY sentiment""", conn)
-no_communities = pd.read_sql_query("""SELECT DISTINCT(community) AS no_community FROM feedbacks""", conn)
 
+def read_sql(fname: str, conn: sqlite3) -> pd.DataFrame:
+    """ Returns a pandas dataframe from external file. """
+
+    with open(fname, 'r') as f:
+        return pd.read_sql_query(f.read(), conn)
+     
 def plot_sentiment():
     """Plot the average sentiment over time."""
 
-    graph = px.line(sentiment, x = 'time', y = 'average_sentiment', 
+    sentiment = read_sql('app/dashboard/queries/sentiment.sql', conn)
+
+    graph = px.line(sentiment, x = 'time', y = 'average_sentiment', labels = {'time': 'Time', 'average_sentiment': 'Average Sentiment Rating'},
             title="Average Sentiment Rating Over Time")
     graph.update_layout(margin=dict(t=50, b=0, l=0, r=0), height = 500, template='simple_white')
 
@@ -28,7 +30,9 @@ def plot_sentiment():
 def plot_no_feedback_per_category():
     """Plot the number of feedback from each category."""
 
-    graph = px.pie(feedback_category, values = 'count', names = 'category',
+    feedback_category = read_sql('app/dashboard/queries/feedback_category.sql', conn)
+
+    graph = px.pie(feedback_category, values = 'count', names = 'category', 
                    title = "Feedback Proportions")
     graph.update_layout(margin=dict(t=75, b=75, l=50, r=0), template='simple_white')
 
@@ -37,7 +41,9 @@ def plot_no_feedback_per_category():
 def plot_avg_sentiment_per_category():
     """Plot average sentiment per category."""
 
-    graph = px.bar(sentiment_category, x = 'category', y = 'average_sentiment',
+    sentiment_category = read_sql('app/dashboard/queries/sentiment_category.sql', conn)
+
+    graph = px.bar(sentiment_category, x = 'category', y = 'average_sentiment', labels = {'category': 'Category', 'average_sentiment': 'Average Sentiment Rating'},
                    title = "Average Sentiment Rating Per Category")
     graph.update_layout(margin=dict(t=75, b=70, l=10, r=10), template='simple_white')
 
@@ -46,7 +52,9 @@ def plot_avg_sentiment_per_category():
 def plot_feedback_sentiment():
     """Plot Sentiment distribution."""
 
-    graph = px.bar(feedback_sentiment, x = 'sentiment', y = 'sentiment_counter',
+    feedback_sentiment = read_sql('app/dashboard/queries/feedback_sentiment.sql', conn)
+
+    graph = px.bar(feedback_sentiment, x = 'sentiment', y = 'sentiment_counter', labels = {'sentiment': 'Sentiment Rating', 'sentiment_counter': 'Number of Sentiment Rating'},
                    title = "Number of Feedback Per Sentiment Rating")
     graph.update_layout(margin=dict(t=75, b=70, l=10, r=10), template='simple_white')
 
@@ -54,6 +62,8 @@ def plot_feedback_sentiment():
 
 def plot_no_feedback():
     """Plot the number of feedback."""
+
+    all = read_sql('app/dashboard/queries/all.sql', conn)
 
     fig = go.Figure(go.Indicator(
         mode = "number",
@@ -67,6 +77,8 @@ def plot_no_feedback():
 def plot_mean_sentiment():
     """Plot the mean of sentiment."""
 
+    all = read_sql('app/dashboard/queries/all.sql', conn)
+
     fig = go.Figure(go.Indicator(
         mode = "number",
         value = all['sentiment'].mean(axis = 0),
@@ -78,6 +90,8 @@ def plot_mean_sentiment():
 
 def plot_no_communities():
     """Plot the number of communities."""
+
+    no_communities = read_sql('app/dashboard/queries/no_communities.sql', conn)
 
     fig = go.Figure(go.Indicator(
         mode = "number",
