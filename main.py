@@ -10,6 +10,8 @@ from llm.solar import Solar
 import datetime
 from etl import etl
 from llm.predibase_sentiment import PredibaseSentiment
+import sqlite3
+from app.utils.db_operations import read_sql
 
 
 SOLAR_API_KEY = ''
@@ -86,13 +88,21 @@ def plan() -> None:
 def generate() -> dict:
     """Generate a plan for the current problems."""
 
-    PROMPT = """
+    conn = sqlite3.connect('app/databases/feedback.db')
+    df = read_sql('app/dashboard/queries/recent_comments.sql', conn)
+
+    comments = ""
+
+    for item in df.to_dict("records"):
+        feedback = item['feedback']
+        comments += feedback + '\n'
+
+
+    PROMPT = f"""
 
     You are a consultant for a medium sized tour company. You are to come up with actionable solutions to address the following complaints from the local community:
 
-        The tour group was very disrespectful to our culture
-        The tour group was littering all over.
-        The tour company didn't fulfill their end of the bargain. They're promoting their packages at our economic expense.
+       {comments}
 
     What are 10 detailed solutions can you suggest to the tour company to resolve these complaints to make their tour packages more sustainable and appease the local community? 
     Make sure the solutions deal primarily with the tour company and tourists, and not the local community. 

@@ -42,3 +42,9 @@ def insert(data: dict, database: str) -> None:
     
     conn.commit()
     conn.close()
+
+def read_sql(fname: str, conn: sqlite3) -> pd.DataFrame:
+    """ Returns a pandas dataframe from external file. """
+
+    with open(fname, 'r') as f:
+        return pd.read_sql_query(f.read(), conn)
