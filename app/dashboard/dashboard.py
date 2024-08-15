@@ -7,14 +7,9 @@ import plotly.express as px
 import sqlite3
 import plotly.graph_objects as go
 import dash_bootstrap_components as dbc
+from app.utils.db_operations import read_sql
 
 conn = sqlite3.connect('app/databases/feedback.db')
-
-def read_sql(fname: str, conn: sqlite3) -> pd.DataFrame:
-    """ Returns a pandas dataframe from external file. """
-
-    with open(fname, 'r') as f:
-        return pd.read_sql_query(f.read(), conn)
      
 def plot_sentiment():
     """Plot the average sentiment over time."""
