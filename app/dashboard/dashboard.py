@@ -1,4 +1,4 @@
-from dash import Dash, html, dcc, callback
+from dash import Dash, html, dcc, callback, dash_table
 from dash.dependencies import Input, Output
 from flask import Flask
 from app_init import app
@@ -54,7 +54,7 @@ def plot_feedback_sentiment():
 
     feedback_sentiment = read_sql('app/dashboard/queries/feedback_sentiment.sql', conn)
 
-    graph = px.bar(feedback_sentiment, x = 'sentiment', y = 'sentiment_counter', labels = {'sentiment': 'Sentiment Rating', 'sentiment_counter': 'Number of Sentiment Rating'},
+    graph = px.bar(feedback_sentiment, x = 'sentiment', y = 'sentiment_counter', labels = {'sentiment': 'Sentiment Rating', 'sentiment_counter': 'Number of Feedback'},
                    title = "Number of Feedback Per Sentiment Rating")
     graph.update_layout(margin=dict(t=75, b=70, l=10, r=10), template='simple_white')
 
@@ -102,7 +102,13 @@ def plot_no_communities():
 
     return fig
 
-# Use dcc.Dropdown for dropdown menu
+def comments_table():
+    """Return a comments table."""
+
+    df = read_sql('app/dashboard/queries/comments.sql', conn)
+    
+    return df
+
 dashboard = Dash(__name__, server = app, routes_pathname_prefix = '/dashboard/')
 
 dashboard.layout = html.Div(
@@ -117,15 +123,20 @@ dashboard.layout = html.Div(
     html.Div(children = [dcc.Graph(id = "no-feedback", figure = plot_no_feedback()),
             dcc.Graph(id = "mean-sentiment", figure = plot_mean_sentiment()),
             dcc.Graph(id = "no-communities", figure = plot_no_communities())            
-            ], style={'textAlign': 'center'}),
+            ]),
 
-    html.Div(children = [dcc.Graph(id="no-feedback-sentiment", figure = plot_feedback_sentiment()), 
+    html.Div(children = [dcc.Graph(id = "no-feedback-sentiment", figure = plot_feedback_sentiment()), 
             dcc.Graph(id="no-avg-feedback", figure = plot_avg_sentiment_per_category()),
             dcc.Graph(id = "category-feedback", figure = plot_no_feedback_per_category())
-            ], style={'textAlign': 'center'}),
+            ]),
 
-    html.Div(children = [dcc.Graph(id="sentiment", figure = plot_sentiment())], 
-             style={'textAlign': 'center'})
-    ]
+    html.Div(children = [dcc.Graph(id = "sentiment", figure = plot_sentiment())
+            ]),
+    
+    html.Div(dash_table.DataTable(
+        id='comments-table',
+        columns=[{"name": i, "id": i} for i in comments_table().columns],
+        data=comments_table().to_dict('records'),
+        page_size=10), id="comments-table-id")
 
-    )
+    ])
