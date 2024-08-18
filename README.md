@@ -22,6 +22,8 @@ Finally, companies may find the ideas too generic. In order to adapt the ideas t
 
 ### Important Links:
 
+Video, Project Information: https://drive.google.com/drive/u/0/folders/1PLdXby7QD4tGoKwdfjDTkZYyGGuYqUuT
+
 # Upstage API Usage
 
 The Upstage API was used three times. During the creation of the dashboard by analyzing sentiment from feedback, to brainstorming and chatting with Solar API.
