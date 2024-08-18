@@ -12,13 +12,10 @@ from etl import etl
 from llm.predibase_sentiment import PredibaseSentiment
 import sqlite3
 from app.utils.db_operations import read_sql
+from keys import SOLAR_API_KEY, PREDIBASE_API_KEY, ADAPTER
 
 
-SOLAR_API_KEY = ''
 solar = Solar(SOLAR_API_KEY)
-
-PREDIBASE_API_KEY = ''
-ADAPTER = ''
 predibase = PredibaseSentiment(PREDIBASE_API_KEY, ADAPTER)
 
 @app.route('/')
