@@ -18,7 +18,7 @@ Sometimes, it is not enough to see the data in a dashboard and companies may wis
 
 ### Chat and Finetune Ideas
 
-Finally, companies may find the ideas too generic. In order to adapt the ideas to the reality of the companies' budget, we can use the Solar API to finetune the ideas. We take advantage of Solar's ability for groundedness checks and Korean background to serve Korean communities in Jeju Island (in this demo).
+Finally, companies may find the ideas too generic. In order to adapt the ideas to the reality of the companies' budget, we can use the Solar API to finetune the ideas. 
 
 ### Important Links:
 
