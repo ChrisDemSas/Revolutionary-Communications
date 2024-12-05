@@ -79,3 +79,7 @@ Make the dashboards public to promote transparency and accountability to other t
 Implement a way for local communities to give suggestions or plans, instead of completely relying on the AI.
 Implement an incentives for companies and local communities for better co-operation.
 Redo the fine tuning using comments from surveying local communities instead of relying on ChatGPT.
+
+# Tech Stack
+Front-End: CSS, HTML, Basic Javascript
+Back-End: Flask, Python, API (Predibase and OpenAI), Dash, Pandas, Sqlite Databases
