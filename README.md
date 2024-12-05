@@ -82,4 +82,5 @@ Redo the fine tuning using comments from surveying local communities instead of 
 
 # Tech Stack
 Front-End: CSS, HTML, Basic Javascript
+
 Back-End: Flask, Python, API (Predibase and OpenAI), Dash, Pandas, Sqlite Databases
